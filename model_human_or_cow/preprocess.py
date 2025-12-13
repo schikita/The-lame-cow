@@ -45,8 +45,8 @@ class YoloPreprocessor:
 
     
     def _prepare_dirs(self) -> None:
-        for sub in ["images/train", "images/val", "labels/train", "labels/val"]
-        (self.out_root/sub).mkdir(parents = True, exist_ok=True)
+        for sub in ["images/train", "images/val", "labels/train", "labels/val"]:
+            (self.out_root/sub).mkdir(parents = True, exist_ok=True)
 
     def _collect_samples(self) -> list[Sample]:
         samples : list[Sample] = []
