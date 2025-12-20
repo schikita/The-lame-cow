@@ -14,7 +14,7 @@ Split = Literal["train","val"]
 @dataclass
 class Sample:
     path:Path
-    classPname:str
+    class_name:str
     split:Split
 
 CLASS_NAME_TO_ID = {
@@ -32,7 +32,7 @@ class YoloPreprocessor:
    ) -> None :
         self.raw_root = Path(raw_root)
         self.out_root = Path(out_root)
-        self.trainzzz-rati = train_ratio
+        self.train_ratio = train_ratio
         self.seed = seed
         random.seed(seed)
 
@@ -41,7 +41,7 @@ class YoloPreprocessor:
         samples = self._collect_samples()
         self._split_and_export(samples)
         self._write_data_yaml()
-        print("Preprocess complete succeful. Data set is in: " + self.out_root)
+        print("Preprocess complete succeful. Data set is in:  {self.out_root}")
 
     
     def _prepare_dirs(self) -> None:
@@ -107,8 +107,8 @@ class YoloPreprocessor:
 
 if __name__ == "__main__":
     prep = YoloPreprocessor(
-        raw_root="raw_data",
-        out_root="dataset",
+        raw_root="data/raw",
+        out_root="data/dataset",
         train_ratio=0.8,
         seed=42,
     )
