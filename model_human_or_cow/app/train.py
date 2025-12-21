@@ -7,17 +7,17 @@ from ultralytics import YOLO
 
 
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="Train YOLOv8 on cow/human dataset")
+    p = argparse.ArgumentParser(description="Train YOLOv8-seg (cow polygons + human boxes->polygons)")
 
     p.add_argument("--data", type=str, default="data/dataset/data.yaml", help="Path to data.yaml")
-    p.add_argument("--model", type=str, default="yolov8n.pt", help="Base model (pretrained) or custom .pt")
+    p.add_argument("--model", type=str, default="yolov8n-seg.pt", help="Base model (seg) or custom .pt")
     p.add_argument("--epochs", type=int, default=30)
     p.add_argument("--imgsz", type=int, default=640)
     p.add_argument("--batch", type=int, default=16)
     p.add_argument("--device", type=str, default="cpu", help='cpu | "0" for GPU0 | "0,1" for multi-gpu')
 
     p.add_argument("--project", type=str, default="artifacts", help="Where to save runs")
-    p.add_argument("--name", type=str, default="train", help="Run name (subfolder in project)")
+    p.add_argument("--name", type=str, default="train-seg", help="Run name (subfolder in project)")
 
     return p.parse_args()
 
@@ -29,7 +29,7 @@ def main() -> None:
     if not data_path.exists():
         raise FileNotFoundError(
             f"data.yaml not found: {data_path}\n"
-            f"Tip: run preprocess first (python -m app.preprocess) and ensure paths are correct."
+            f"Tip: run preprocess first: python -m app.preprocess"
         )
 
     project_dir = Path(args.project)
