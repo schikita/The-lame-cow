@@ -9,7 +9,7 @@ from ultralytics import YOLO
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Train YOLOv8-seg (cow polygons + human boxes->polygons)")
 
-    p.add_argument("--data", type=str, default="data/dataset/data.yaml", help="Path to data.yaml")
+    p.add_argument("--data", type=str, default="app/dataset/data.yaml", help="Path to data.yaml")
     p.add_argument("--model", type=str, default="yolov8n-seg.pt", help="Base model (seg) or custom .pt")
     p.add_argument("--epochs", type=int, default=30)
     p.add_argument("--imgsz", type=int, default=640)
