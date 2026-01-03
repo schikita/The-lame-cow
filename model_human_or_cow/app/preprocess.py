@@ -32,7 +32,7 @@ class YoloPreprocessor:
     def __init__(
         self,
         raw_root: str | Path = "data/raw",
-        out_root: str | Path = "data/dataset",
+        out_root: str | Path = "app/dataset",
         train_ratio: float = 0.8,
         seed: int = 42,
     ) -> None:
@@ -187,7 +187,7 @@ class YoloPreprocessor:
 if __name__ == "__main__":
     YoloPreprocessor(
         raw_root="data/raw",
-        out_root="data/dataset",
+        out_root="app/dataset",
         train_ratio=0.8,
         seed=42,
     ).run()
